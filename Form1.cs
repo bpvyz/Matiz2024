@@ -16,6 +16,7 @@ using iText.Layout.Properties;
 
 namespace Matiz2024
 {
+
     public partial class Form1 : Form
     {
         List<string> labelsOnPage = new List<string>(new string[24]);
@@ -141,7 +142,6 @@ namespace Matiz2024
             labelCloseupPanel.Paint += labelCloseupPanel_Paint;
         }
 
-
         private void SaveSablon(object sender, EventArgs e)
         {
             var sablon = new
@@ -164,8 +164,11 @@ namespace Matiz2024
 
             try
             {
+                // Define the path to the Desktop's "sabloni" folder
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string directoryPath = System.IO.Path.Combine(desktopPath, "sabloni");
+
                 // Ensure the directory exists
-                string directoryPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sabloni");
                 if (!System.IO.Directory.Exists(directoryPath))
                 {
                     System.IO.Directory.CreateDirectory(directoryPath);
@@ -188,7 +191,6 @@ namespace Matiz2024
                 MessageBox.Show($"Greska prilikom cuvanja sablona: {ex.Message}");
             }
         }
-
 
         private void LoadSablon(object sender, EventArgs e)
         {
@@ -359,33 +361,18 @@ namespace Matiz2024
                 return;
             }
 
-            string selectedEntry = labelsListBox.SelectedItem.ToString();
+            string selectedEntry = labelsListBox.SelectedItem.ToString().Split(new[] { " - " }, StringSplitOptions.None)[0].Trim();
 
-            // Extract the ARTIKAL value and the number of labels to delete
-            string artikalValue = selectedEntry.Split('-')[0].Trim();
+            // Count how many times the ARTIKAL value appears in labelsOnPage
             int numberOfLabelsToDelete = 0;
-
-            var artikalCounts = new Dictionary<string, int>();
 
             foreach (var labelText in labelsOnPage)
             {
                 string artikal = ExtractArtikalValue(labelText);
-                if (!string.IsNullOrEmpty(artikal))
+                if (artikal == selectedEntry)
                 {
-                    if (artikalCounts.ContainsKey(artikal))
-                    {
-                        artikalCounts[artikal]++;
-                    }
-                    else
-                    {
-                        artikalCounts[artikal] = 1;
-                    }
+                    numberOfLabelsToDelete++;
                 }
-            }
-
-            if (artikalCounts.ContainsKey(artikalValue))
-            {
-                numberOfLabelsToDelete = artikalCounts[artikalValue];
             }
 
             // Remove the label(s) from labelsOnPage
@@ -395,7 +382,7 @@ namespace Matiz2024
 
                 string artikal = ExtractArtikalValue(labelsOnPage[i]);
 
-                if (artikal == artikalValue)
+                if (artikal == selectedEntry)
                 {
                     labelsOnPage[i] = null; // Or assign an empty string
                     numberOfLabelsToDelete--;
@@ -422,7 +409,6 @@ namespace Matiz2024
             g.Clear(Color.White);
 
             float scaleFactor = 0.75f; // Scaling factor for the preview
-
             float mmToPixel = 96 / 25.4f * scaleFactor;
             float labelWidth = 70 * mmToPixel;
             float labelHeight = 37 * mmToPixel;
@@ -430,11 +416,11 @@ namespace Matiz2024
             int labelsPerRow = LabelsPerRow;
             int labelsPerColumn = LabelsPerColumn;
 
-            Font headerFont = new Font("Arial", 16 * scaleFactor, FontStyle.Bold);
-            Font footerFont = new Font("Arial", 10 * scaleFactor, FontStyle.Bold);
-            Font textFont = new Font("Arial", 12 * scaleFactor, FontStyle.Regular);
+            Font artikalFont = new Font("Arial", 26 * scaleFactor, FontStyle.Bold);
+            Font numberFont = new Font("Arial", 15 * scaleFactor, FontStyle.Bold); // Font for numbers
 
             float textMargin = 5 * mmToPixel;
+            float numberMargin = 3 * mmToPixel; // Margin for numbers from the edge
 
             for (int row = 0; row < labelsPerColumn; row++)
             {
@@ -451,35 +437,29 @@ namespace Matiz2024
                         string labelText = labelsOnPage[index] ?? string.Empty;
                         if (!string.IsNullOrEmpty(labelText))
                         {
-                            string header = "D E K L A R A C I J A";
-                            float headerWidth = labelWidth - 2 * textMargin;
-                            float headerX = x + textMargin;
-                            float headerY = y + textMargin;
-                            DrawText(g, header, headerX, headerY, headerWidth, 14 * scaleFactor, headerFont, centerText: true);
-
-                            float headerHeight = g.MeasureString(header, headerFont).Height;
-                            float spaceBetweenHeaderAndText = 3 * mmToPixel;
-                            float remainingTextY = y + headerHeight + spaceBetweenHeaderAndText;
-                            float remainingTextHeight = labelHeight - headerHeight - spaceBetweenHeaderAndText - textMargin - 5 * scaleFactor;
-
-                            remainingTextHeight = Math.Max(remainingTextHeight, 0);
-
-                            float remainingTextWidth = labelWidth - 2 * textMargin;
-                            DrawText(g, labelText, x + textMargin, remainingTextY, remainingTextWidth, remainingTextHeight, textFont);
-
-                            string footer = "KVALITET KONTROLISAO JUGOINSPEKT BEOGRAD";
-                            float footerWidth = labelWidth - 2 * textMargin;
-                            float footerX = x + textMargin;
-                            float footerY = y + labelHeight - textMargin - 5 * scaleFactor;
-                            DrawText(g, footer, footerX, footerY, footerWidth, 5 * scaleFactor, footerFont, centerText: true);
+                            string artikalText = ExtractArtikalValue(labelText);
+                            if (!string.IsNullOrEmpty(artikalText))
+                            {
+                                float artikalWidth = labelWidth - 2 * textMargin;
+                                float artikalHeight = labelHeight - 2 * textMargin;
+                                float artikalX = x + textMargin;
+                                float artikalY = y + textMargin;
+                                DrawText(g, artikalText, artikalX, artikalY, artikalWidth, artikalHeight, artikalFont);
+                            }
                         }
+
+                        // Draw the number in the top-right corner
+                        string numberText = (index + 1).ToString();
+                        SizeF numberSize = g.MeasureString(numberText, numberFont);
+                        float numberX = x + labelWidth - numberSize.Width - numberMargin;
+                        float numberY = y + numberMargin;
+                        g.DrawString(numberText, numberFont, Brushes.Red, new PointF(numberX, numberY));
                     }
                 }
             }
         }
 
-
-        private void DrawText(Graphics g, string text, float x, float y, float width, float height, Font font, bool centerText = false)
+        private void DrawText(Graphics g, string text, float x, float y, float width, float height, Font font, bool centerText = true)
         {
             SizeF textSize = g.MeasureString(text, font);
 
@@ -497,10 +477,16 @@ namespace Matiz2024
                 y += (height - textSize.Height) / 2;
             }
 
+            // Ensure text is within the bounds of the label
+            x = Math.Max(x, x);
+            y = Math.Max(y, y);
+            x = Math.Min(x, x + width - textSize.Width);
+            y = Math.Min(y, y + height - textSize.Height);
+
             string[] lines = SplitTextIntoLines(text, font, width);
             float lineHeight = g.MeasureString("A", font).Height;
 
-            float textY = y; // Start from the top of the sticker
+            float textY = y; // Start from the top of the label
             foreach (var line in lines)
             {
                 g.DrawString(line, font, Brushes.Black, new PointF(x, textY)); // Draw text

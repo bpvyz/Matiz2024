@@ -244,6 +244,7 @@ namespace Matiz2024
                 comboBox.SelectedItem = value;
             }
         }
+
         private void AddLabelToA4(object sender, EventArgs e)
         {
             int startPosition = (int)numericUpDownPosition.Value - 1;
@@ -669,6 +670,8 @@ namespace Matiz2024
                 File.WriteAllText(fileName, json);
             }
 
+            comboBox.SelectedItem = value;
+            UpdateLabelCloseup();
             // Refresh the ComboBox to display updated values
             LoadComboBoxValue(comboBox, fileName);
         }
@@ -691,6 +694,8 @@ namespace Matiz2024
                 // Save updated values back to JSON
                 SaveComboBoxValues(comboBox, fileName);
             }
+            comboBox.SelectedItem = null;
+            UpdateLabelCloseup();
         }
 
         private void UpdateToolTipSave(ToolTip toolTip, Button button, string text, Color color)

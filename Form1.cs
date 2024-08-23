@@ -71,6 +71,7 @@ namespace Matiz2024
             removeArtikalButton.Click += removeArtikalButton_Click;
             removeNazivButton.Click += removeNazivButton_Click;
 
+            deleteLabelButton.Click += DeleteLabelButton_Click;
 
 
             // Load saved values
@@ -192,7 +193,6 @@ namespace Matiz2024
                 comboBox.SelectedItem = value;
             }
         }
-
         private void AddLabelToA4(object sender, EventArgs e)
         {
             int startPosition = (int)numericUpDownPosition.Value - 1;
@@ -201,7 +201,7 @@ namespace Matiz2024
             // Validate the startPosition and amount
             if (startPosition < 0 || startPosition >= 24)
             {
-                MessageBox.Show("Pozicija mora biti između 0 i 23.");
+                MessageBox.Show("Pozicija mora biti između 1 i 24.");
                 return;
             }
 
@@ -234,9 +234,130 @@ namespace Matiz2024
                 }
             }
 
+            // Update the ListBox with the new label information
+            UpdateLabelsListBox();
+
             // Update the preview with the new labels
             UpdateA4Preview();
         }
+        // Method to extract the value of ARTIKAL from labelText
+        // Method to extract the value of ARTIKAL from labelText
+        private string ExtractArtikalValue(string labelText)
+        {
+            if (string.IsNullOrEmpty(labelText))
+            {
+                return string.Empty;
+            }
+
+            var lines = labelText.Split('\n');
+
+            foreach (var line in lines)
+            {
+                if (line.StartsWith("ARTIKAL:"))
+                {
+                    return line.Substring("ARTIKAL:".Length).Trim();
+                }
+            }
+
+            return string.Empty;
+        }
+
+        // Method to update the ListBox with grouped ARTIKAL values
+        private void UpdateLabelsListBox()
+        {
+            if (labelsOnPage == null)
+            {
+                return; // Or handle the error as needed
+            }
+
+            var artikalCounts = new Dictionary<string, int>();
+
+            // Count occurrences of each ARTIKAL value
+            foreach (var labelText in labelsOnPage)
+            {
+                string artikalValue = ExtractArtikalValue(labelText);
+
+                if (!string.IsNullOrEmpty(artikalValue))
+                {
+                    if (artikalCounts.ContainsKey(artikalValue))
+                    {
+                        artikalCounts[artikalValue]++;
+                    }
+                    else
+                    {
+                        artikalCounts[artikalValue] = 1;
+                    }
+                }
+            }
+
+            // Update ListBox with grouped ARTIKAL values
+            labelsListBox.Items.Clear();
+            foreach (var kvp in artikalCounts)
+            {
+                string displayText = $"{kvp.Key} - {kvp.Value} komada";
+                labelsListBox.Items.Add(displayText);
+            }
+        }
+
+        private void DeleteLabelButton_Click(object sender, EventArgs e)
+        {
+            if (labelsListBox.SelectedItem == null)
+            {
+                MessageBox.Show("Izaberite deklaraciju za brisanje!");
+                return;
+            }
+
+            string selectedEntry = labelsListBox.SelectedItem.ToString();
+
+            // Extract the ARTIKAL value and the number of labels to delete
+            string artikalValue = selectedEntry.Split('-')[0].Trim();
+            int numberOfLabelsToDelete = 0;
+
+            var artikalCounts = new Dictionary<string, int>();
+
+            foreach (var labelText in labelsOnPage)
+            {
+                string artikal = ExtractArtikalValue(labelText);
+                if (!string.IsNullOrEmpty(artikal))
+                {
+                    if (artikalCounts.ContainsKey(artikal))
+                    {
+                        artikalCounts[artikal]++;
+                    }
+                    else
+                    {
+                        artikalCounts[artikal] = 1;
+                    }
+                }
+            }
+
+            if (artikalCounts.ContainsKey(artikalValue))
+            {
+                numberOfLabelsToDelete = artikalCounts[artikalValue];
+            }
+
+            // Remove the label(s) from labelsOnPage
+            for (int i = 0; i < labelsOnPage.Count; i++)
+            {
+                if (numberOfLabelsToDelete <= 0) break;
+
+                string artikal = ExtractArtikalValue(labelsOnPage[i]);
+
+                if (artikal == artikalValue)
+                {
+                    labelsOnPage[i] = null; // Or assign an empty string
+                    numberOfLabelsToDelete--;
+                }
+            }
+
+            // Remove the entry from the ListBox
+            labelsListBox.Items.Remove(labelsListBox.SelectedItem);
+
+            // Rerender the A4 sheet
+            UpdateA4Preview();
+        }
+
+
 
 
         private void UpdateA4Preview()
@@ -251,16 +372,18 @@ namespace Matiz2024
             Graphics g = e.Graphics;
             g.Clear(Color.White);
 
-            float mmToPixel = 96 / 25.4f;
+            float scaleFactor = 0.75f; // Scaling factor for the preview
+
+            float mmToPixel = 96 / 25.4f * scaleFactor;
             float labelWidth = 70 * mmToPixel;
             float labelHeight = 37 * mmToPixel;
 
             int labelsPerRow = LabelsPerRow;
             int labelsPerColumn = LabelsPerColumn;
 
-            Font headerFont = new Font("Arial", 16, FontStyle.Bold);
-            Font footerFont = new Font("Arial", 10, FontStyle.Bold);
-            Font textFont = new Font("Arial", 12, FontStyle.Regular);
+            Font headerFont = new Font("Arial", 16 * scaleFactor, FontStyle.Bold);
+            Font footerFont = new Font("Arial", 10 * scaleFactor, FontStyle.Bold);
+            Font textFont = new Font("Arial", 12 * scaleFactor, FontStyle.Regular);
 
             float textMargin = 5 * mmToPixel;
 
@@ -283,12 +406,12 @@ namespace Matiz2024
                             float headerWidth = labelWidth - 2 * textMargin;
                             float headerX = x + textMargin;
                             float headerY = y + textMargin;
-                            DrawText(g, header, headerX, headerY, headerWidth, 14, headerFont, centerText: true);
+                            DrawText(g, header, headerX, headerY, headerWidth, 14 * scaleFactor, headerFont, centerText: true);
 
                             float headerHeight = g.MeasureString(header, headerFont).Height;
                             float spaceBetweenHeaderAndText = 3 * mmToPixel;
                             float remainingTextY = y + headerHeight + spaceBetweenHeaderAndText;
-                            float remainingTextHeight = labelHeight - headerHeight - spaceBetweenHeaderAndText - textMargin - 5;
+                            float remainingTextHeight = labelHeight - headerHeight - spaceBetweenHeaderAndText - textMargin - 5 * scaleFactor;
 
                             remainingTextHeight = Math.Max(remainingTextHeight, 0);
 
@@ -298,14 +421,13 @@ namespace Matiz2024
                             string footer = "KVALITET KONTROLISAO JUGOINSPEKT BEOGRAD";
                             float footerWidth = labelWidth - 2 * textMargin;
                             float footerX = x + textMargin;
-                            float footerY = y + labelHeight - textMargin - 5;
-                            DrawText(g, footer, footerX, footerY, footerWidth, 5, footerFont, centerText: true);
+                            float footerY = y + labelHeight - textMargin - 5 * scaleFactor;
+                            DrawText(g, footer, footerX, footerY, footerWidth, 5 * scaleFactor, footerFont, centerText: true);
                         }
                     }
                 }
             }
         }
-
 
 
         private void DrawText(Graphics g, string text, float x, float y, float width, float height, Font font, bool centerText = false)
@@ -656,6 +778,82 @@ namespace Matiz2024
         private void PrintButton_Click(object sender, EventArgs e)
         {
             printPreviewDialog.ShowDialog();
+        }
+
+
+        private void RenderLabelCloseup(Graphics g, string labelText)
+        {
+            float scaleFactor = 2.5f; // Scale up the label for close-up view
+
+            // Define dimensions based on scale factor
+            float mmToPixel = 96 / 25.4f * scaleFactor;
+            float labelWidth = 70 * mmToPixel;
+            float labelHeight = 37 * mmToPixel;
+
+            Font headerFont = new Font("Arial", 16 * scaleFactor, FontStyle.Bold);
+            Font footerFont = new Font("Arial", 10 * scaleFactor, FontStyle.Bold);
+            Font textFont = new Font("Arial", 12 * scaleFactor, FontStyle.Regular);
+
+            float textMargin = 5 * mmToPixel;
+
+            g.Clear(Color.White);
+            g.DrawRectangle(Pens.Black, 0, 0, labelWidth, labelHeight);
+
+            // Draw Header
+            string header = "D E K L A R A C I J A";
+            DrawText(g, header, textMargin, textMargin, labelWidth - 2 * textMargin, 14 * scaleFactor, headerFont, centerText: true);
+
+            // Draw Main Text
+            float headerHeight = g.MeasureString(header, headerFont).Height;
+            float remainingTextY = headerHeight + 3 * mmToPixel;
+            float remainingTextHeight = labelHeight - headerHeight - 3 * mmToPixel - textMargin - 5 * scaleFactor;
+            remainingTextHeight = Math.Max(remainingTextHeight, 0);
+
+            DrawText(g, labelText, textMargin, remainingTextY, labelWidth - 2 * textMargin, remainingTextHeight, textFont);
+
+            // Draw Footer
+            string footer = "KVALITET KONTROLISAO JUGOINSPEKT BEOGRAD";
+            DrawText(g, footer, textMargin, labelHeight - textMargin - 5 * scaleFactor, labelWidth - 2 * textMargin, 5 * scaleFactor, footerFont, centerText: true);
+        }
+
+
+        private void RenderLabelForA4(Graphics g, string labelText, float x, float y, float labelWidth, float labelHeight)
+        {
+            Font headerFont = new Font("Arial", 16, FontStyle.Bold);
+            Font footerFont = new Font("Arial", 10, FontStyle.Bold);
+            Font textFont = new Font("Arial", 12, FontStyle.Regular);
+
+            float textMargin = 5;
+
+            g.DrawRectangle(Pens.Black, x, y, labelWidth, labelHeight);
+
+            // Draw Header
+            string header = "D E K L A R A C I J A";
+            DrawText(g, header, x + textMargin, y + textMargin, labelWidth - 2 * textMargin, 14, headerFont, centerText: true);
+
+            // Draw Main Text
+            float headerHeight = g.MeasureString(header, headerFont).Height;
+            float remainingTextY = y + headerHeight + 3;
+            float remainingTextHeight = labelHeight - headerHeight - 3 - textMargin - 5;
+            remainingTextHeight = Math.Max(remainingTextHeight, 0);
+
+            DrawText(g, labelText, x + textMargin, remainingTextY, labelWidth - 2 * textMargin, remainingTextHeight, textFont);
+
+            // Draw Footer
+            string footer = "KVALITET KONTROLISAO JUGOINSPEKT BEOGRAD";
+            DrawText(g, footer, x + textMargin, y + labelHeight - textMargin - 5, labelWidth - 2 * textMargin, 5, footerFont, centerText: true);
+        }
+
+
+        private void labelCloseupPanel_Paint(object sender, PaintEventArgs e)
+        {
+            if (e == null || e.Graphics == null) return;
+
+            Graphics g = e.Graphics;
+
+            // Render a label from the ListBox selection or other source
+            string labelText = /* Retrieve selected label text */;
+            RenderLabelCloseup(g, labelText);
         }
 
 

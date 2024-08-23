@@ -93,14 +93,17 @@
             this.label16 = new System.Windows.Forms.Label();
             this.numericUpDownPosition = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.labelsListBox = new System.Windows.Forms.ListBox();
+            this.deleteLabelButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLabels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPosition)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,7 +118,7 @@
             // comboBoxUvoznik
             // 
             this.comboBoxUvoznik.FormattingEnabled = true;
-            this.comboBoxUvoznik.Location = new System.Drawing.Point(115, 294);
+            this.comboBoxUvoznik.Location = new System.Drawing.Point(116, 255);
             this.comboBoxUvoznik.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxUvoznik.Name = "comboBoxUvoznik";
             this.comboBoxUvoznik.Size = new System.Drawing.Size(151, 21);
@@ -124,7 +127,7 @@
             // comboBoxUverenje
             // 
             this.comboBoxUverenje.FormattingEnabled = true;
-            this.comboBoxUverenje.Location = new System.Drawing.Point(115, 370);
+            this.comboBoxUverenje.Location = new System.Drawing.Point(116, 331);
             this.comboBoxUverenje.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxUverenje.Name = "comboBoxUverenje";
             this.comboBoxUverenje.Size = new System.Drawing.Size(151, 21);
@@ -133,7 +136,7 @@
             // comboBoxSrps
             // 
             this.comboBoxSrps.FormattingEnabled = true;
-            this.comboBoxSrps.Location = new System.Drawing.Point(115, 597);
+            this.comboBoxSrps.Location = new System.Drawing.Point(116, 558);
             this.comboBoxSrps.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSrps.Name = "comboBoxSrps";
             this.comboBoxSrps.Size = new System.Drawing.Size(151, 21);
@@ -142,7 +145,7 @@
             // comboBoxProizvodjac
             // 
             this.comboBoxProizvodjac.FormattingEnabled = true;
-            this.comboBoxProizvodjac.Location = new System.Drawing.Point(115, 332);
+            this.comboBoxProizvodjac.Location = new System.Drawing.Point(116, 293);
             this.comboBoxProizvodjac.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxProizvodjac.Name = "comboBoxProizvodjac";
             this.comboBoxProizvodjac.Size = new System.Drawing.Size(151, 21);
@@ -151,7 +154,7 @@
             // comboBoxPostava
             // 
             this.comboBoxPostava.FormattingEnabled = true;
-            this.comboBoxPostava.Location = new System.Drawing.Point(115, 522);
+            this.comboBoxPostava.Location = new System.Drawing.Point(116, 483);
             this.comboBoxPostava.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPostava.Name = "comboBoxPostava";
             this.comboBoxPostava.Size = new System.Drawing.Size(151, 21);
@@ -160,7 +163,7 @@
             // comboBoxPoreklo
             // 
             this.comboBoxPoreklo.FormattingEnabled = true;
-            this.comboBoxPoreklo.Location = new System.Drawing.Point(115, 256);
+            this.comboBoxPoreklo.Location = new System.Drawing.Point(116, 217);
             this.comboBoxPoreklo.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPoreklo.Name = "comboBoxPoreklo";
             this.comboBoxPoreklo.Size = new System.Drawing.Size(151, 21);
@@ -169,7 +172,7 @@
             // comboBoxOdrzavanje
             // 
             this.comboBoxOdrzavanje.FormattingEnabled = true;
-            this.comboBoxOdrzavanje.Location = new System.Drawing.Point(115, 711);
+            this.comboBoxOdrzavanje.Location = new System.Drawing.Point(116, 672);
             this.comboBoxOdrzavanje.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxOdrzavanje.Name = "comboBoxOdrzavanje";
             this.comboBoxOdrzavanje.Size = new System.Drawing.Size(151, 21);
@@ -178,7 +181,7 @@
             // comboBoxNamena
             // 
             this.comboBoxNamena.FormattingEnabled = true;
-            this.comboBoxNamena.Location = new System.Drawing.Point(115, 673);
+            this.comboBoxNamena.Location = new System.Drawing.Point(116, 634);
             this.comboBoxNamena.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxNamena.Name = "comboBoxNamena";
             this.comboBoxNamena.Size = new System.Drawing.Size(151, 21);
@@ -187,7 +190,7 @@
             // comboBoxLice
             // 
             this.comboBoxLice.FormattingEnabled = true;
-            this.comboBoxLice.Location = new System.Drawing.Point(115, 484);
+            this.comboBoxLice.Location = new System.Drawing.Point(116, 445);
             this.comboBoxLice.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxLice.Name = "comboBoxLice";
             this.comboBoxLice.Size = new System.Drawing.Size(151, 21);
@@ -196,7 +199,7 @@
             // comboBoxIzrada
             // 
             this.comboBoxIzrada.FormattingEnabled = true;
-            this.comboBoxIzrada.Location = new System.Drawing.Point(115, 635);
+            this.comboBoxIzrada.Location = new System.Drawing.Point(116, 596);
             this.comboBoxIzrada.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxIzrada.Name = "comboBoxIzrada";
             this.comboBoxIzrada.Size = new System.Drawing.Size(151, 21);
@@ -205,7 +208,7 @@
             // comboBoxDjon
             // 
             this.comboBoxDjon.FormattingEnabled = true;
-            this.comboBoxDjon.Location = new System.Drawing.Point(115, 560);
+            this.comboBoxDjon.Location = new System.Drawing.Point(116, 521);
             this.comboBoxDjon.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxDjon.Name = "comboBoxDjon";
             this.comboBoxDjon.Size = new System.Drawing.Size(151, 21);
@@ -214,7 +217,7 @@
             // comboBoxArtikal
             // 
             this.comboBoxArtikal.FormattingEnabled = true;
-            this.comboBoxArtikal.Location = new System.Drawing.Point(115, 446);
+            this.comboBoxArtikal.Location = new System.Drawing.Point(116, 407);
             this.comboBoxArtikal.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxArtikal.Name = "comboBoxArtikal";
             this.comboBoxArtikal.Size = new System.Drawing.Size(151, 21);
@@ -233,7 +236,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(112, 279);
+            this.label2.Location = new System.Drawing.Point(113, 240);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
@@ -243,7 +246,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(112, 355);
+            this.label3.Location = new System.Drawing.Point(113, 316);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
@@ -253,7 +256,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(112, 583);
+            this.label4.Location = new System.Drawing.Point(113, 544);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
@@ -263,7 +266,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(112, 317);
+            this.label5.Location = new System.Drawing.Point(113, 278);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 13);
@@ -273,7 +276,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(112, 507);
+            this.label6.Location = new System.Drawing.Point(113, 468);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 13);
@@ -283,7 +286,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(112, 241);
+            this.label7.Location = new System.Drawing.Point(113, 202);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 13);
@@ -293,7 +296,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(112, 696);
+            this.label8.Location = new System.Drawing.Point(113, 657);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(61, 13);
@@ -303,7 +306,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(112, 658);
+            this.label9.Location = new System.Drawing.Point(113, 619);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(47, 13);
@@ -313,7 +316,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(112, 469);
+            this.label10.Location = new System.Drawing.Point(113, 430);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(27, 13);
@@ -323,7 +326,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(112, 620);
+            this.label11.Location = new System.Drawing.Point(113, 581);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 13);
@@ -333,7 +336,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(112, 545);
+            this.label12.Location = new System.Drawing.Point(113, 506);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(29, 13);
@@ -343,7 +346,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(112, 431);
+            this.label13.Location = new System.Drawing.Point(113, 392);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(36, 13);
@@ -362,15 +365,13 @@
             // 
             // previewPanel
             // 
-            this.previewPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.previewPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.previewPanel.AutoScroll = true;
             this.previewPanel.BackColor = System.Drawing.Color.White;
-            this.previewPanel.Location = new System.Drawing.Point(5, 18);
+            this.previewPanel.Location = new System.Drawing.Point(11, 12);
             this.previewPanel.Margin = new System.Windows.Forms.Padding(2);
             this.previewPanel.Name = "previewPanel";
-            this.previewPanel.Size = new System.Drawing.Size(796, 1120);
+            this.previewPanel.Size = new System.Drawing.Size(597, 840);
             this.previewPanel.TabIndex = 45;
             // 
             // saveSablonButton
@@ -419,7 +420,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(112, 393);
+            this.label15.Location = new System.Drawing.Point(113, 354);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(34, 13);
@@ -429,7 +430,7 @@
             // comboBoxNaziv
             // 
             this.comboBoxNaziv.FormattingEnabled = true;
-            this.comboBoxNaziv.Location = new System.Drawing.Point(115, 408);
+            this.comboBoxNaziv.Location = new System.Drawing.Point(116, 369);
             this.comboBoxNaziv.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxNaziv.Name = "comboBoxNaziv";
             this.comboBoxNaziv.Size = new System.Drawing.Size(151, 21);
@@ -439,7 +440,7 @@
             // 
             this.removeLiceButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeLiceButton.BackgroundImage")));
             this.removeLiceButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removeLiceButton.Location = new System.Drawing.Point(53, 469);
+            this.removeLiceButton.Location = new System.Drawing.Point(54, 430);
             this.removeLiceButton.Margin = new System.Windows.Forms.Padding(2);
             this.removeLiceButton.Name = "removeLiceButton";
             this.removeLiceButton.Size = new System.Drawing.Size(36, 36);
@@ -450,7 +451,7 @@
             // 
             this.removeNazivButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeNazivButton.BackgroundImage")));
             this.removeNazivButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removeNazivButton.Location = new System.Drawing.Point(53, 393);
+            this.removeNazivButton.Location = new System.Drawing.Point(54, 354);
             this.removeNazivButton.Margin = new System.Windows.Forms.Padding(2);
             this.removeNazivButton.Name = "removeNazivButton";
             this.removeNazivButton.Size = new System.Drawing.Size(36, 36);
@@ -461,7 +462,7 @@
             // 
             this.removeArtikalButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeArtikalButton.BackgroundImage")));
             this.removeArtikalButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removeArtikalButton.Location = new System.Drawing.Point(53, 431);
+            this.removeArtikalButton.Location = new System.Drawing.Point(54, 392);
             this.removeArtikalButton.Margin = new System.Windows.Forms.Padding(2);
             this.removeArtikalButton.Name = "removeArtikalButton";
             this.removeArtikalButton.Size = new System.Drawing.Size(36, 36);
@@ -472,7 +473,7 @@
             // 
             this.removeDjonButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeDjonButton.BackgroundImage")));
             this.removeDjonButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removeDjonButton.Location = new System.Drawing.Point(53, 545);
+            this.removeDjonButton.Location = new System.Drawing.Point(54, 506);
             this.removeDjonButton.Margin = new System.Windows.Forms.Padding(2);
             this.removeDjonButton.Name = "removeDjonButton";
             this.removeDjonButton.Size = new System.Drawing.Size(36, 36);
@@ -483,7 +484,7 @@
             // 
             this.removeIzradaButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeIzradaButton.BackgroundImage")));
             this.removeIzradaButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removeIzradaButton.Location = new System.Drawing.Point(53, 620);
+            this.removeIzradaButton.Location = new System.Drawing.Point(54, 581);
             this.removeIzradaButton.Margin = new System.Windows.Forms.Padding(2);
             this.removeIzradaButton.Name = "removeIzradaButton";
             this.removeIzradaButton.Size = new System.Drawing.Size(36, 36);
@@ -494,7 +495,7 @@
             // 
             this.removeNamenaButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeNamenaButton.BackgroundImage")));
             this.removeNamenaButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removeNamenaButton.Location = new System.Drawing.Point(53, 658);
+            this.removeNamenaButton.Location = new System.Drawing.Point(54, 619);
             this.removeNamenaButton.Margin = new System.Windows.Forms.Padding(2);
             this.removeNamenaButton.Name = "removeNamenaButton";
             this.removeNamenaButton.Size = new System.Drawing.Size(36, 36);
@@ -505,7 +506,7 @@
             // 
             this.removeOdrzavanjeButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeOdrzavanjeButton.BackgroundImage")));
             this.removeOdrzavanjeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removeOdrzavanjeButton.Location = new System.Drawing.Point(53, 696);
+            this.removeOdrzavanjeButton.Location = new System.Drawing.Point(54, 657);
             this.removeOdrzavanjeButton.Margin = new System.Windows.Forms.Padding(2);
             this.removeOdrzavanjeButton.Name = "removeOdrzavanjeButton";
             this.removeOdrzavanjeButton.Size = new System.Drawing.Size(36, 36);
@@ -516,7 +517,7 @@
             // 
             this.removePorekloButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removePorekloButton.BackgroundImage")));
             this.removePorekloButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removePorekloButton.Location = new System.Drawing.Point(53, 239);
+            this.removePorekloButton.Location = new System.Drawing.Point(54, 200);
             this.removePorekloButton.Margin = new System.Windows.Forms.Padding(2);
             this.removePorekloButton.Name = "removePorekloButton";
             this.removePorekloButton.Size = new System.Drawing.Size(36, 36);
@@ -527,7 +528,7 @@
             // 
             this.removePostavaButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removePostavaButton.BackgroundImage")));
             this.removePostavaButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removePostavaButton.Location = new System.Drawing.Point(53, 506);
+            this.removePostavaButton.Location = new System.Drawing.Point(54, 467);
             this.removePostavaButton.Margin = new System.Windows.Forms.Padding(2);
             this.removePostavaButton.Name = "removePostavaButton";
             this.removePostavaButton.Size = new System.Drawing.Size(36, 36);
@@ -538,7 +539,7 @@
             // 
             this.removeProizvodjacButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeProizvodjacButton.BackgroundImage")));
             this.removeProizvodjacButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removeProizvodjacButton.Location = new System.Drawing.Point(53, 317);
+            this.removeProizvodjacButton.Location = new System.Drawing.Point(54, 278);
             this.removeProizvodjacButton.Margin = new System.Windows.Forms.Padding(2);
             this.removeProizvodjacButton.Name = "removeProizvodjacButton";
             this.removeProizvodjacButton.Size = new System.Drawing.Size(36, 36);
@@ -549,7 +550,7 @@
             // 
             this.removeSrpsButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeSrpsButton.BackgroundImage")));
             this.removeSrpsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removeSrpsButton.Location = new System.Drawing.Point(53, 582);
+            this.removeSrpsButton.Location = new System.Drawing.Point(54, 543);
             this.removeSrpsButton.Margin = new System.Windows.Forms.Padding(2);
             this.removeSrpsButton.Name = "removeSrpsButton";
             this.removeSrpsButton.Size = new System.Drawing.Size(36, 36);
@@ -560,7 +561,7 @@
             // 
             this.removeUverenjeButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeUverenjeButton.BackgroundImage")));
             this.removeUverenjeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removeUverenjeButton.Location = new System.Drawing.Point(53, 355);
+            this.removeUverenjeButton.Location = new System.Drawing.Point(54, 316);
             this.removeUverenjeButton.Margin = new System.Windows.Forms.Padding(2);
             this.removeUverenjeButton.Name = "removeUverenjeButton";
             this.removeUverenjeButton.Size = new System.Drawing.Size(36, 36);
@@ -571,7 +572,7 @@
             // 
             this.removeUvoznikButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeUvoznikButton.BackgroundImage")));
             this.removeUvoznikButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removeUvoznikButton.Location = new System.Drawing.Point(53, 279);
+            this.removeUvoznikButton.Location = new System.Drawing.Point(54, 240);
             this.removeUvoznikButton.Margin = new System.Windows.Forms.Padding(2);
             this.removeUvoznikButton.Name = "removeUvoznikButton";
             this.removeUvoznikButton.Size = new System.Drawing.Size(36, 36);
@@ -582,7 +583,7 @@
             // 
             this.saveLiceButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveLiceButton.BackgroundImage")));
             this.saveLiceButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.saveLiceButton.Location = new System.Drawing.Point(299, 469);
+            this.saveLiceButton.Location = new System.Drawing.Point(300, 430);
             this.saveLiceButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveLiceButton.Name = "saveLiceButton";
             this.saveLiceButton.Size = new System.Drawing.Size(36, 36);
@@ -593,7 +594,7 @@
             // 
             this.saveNazivButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveNazivButton.BackgroundImage")));
             this.saveNazivButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.saveNazivButton.Location = new System.Drawing.Point(299, 393);
+            this.saveNazivButton.Location = new System.Drawing.Point(300, 354);
             this.saveNazivButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveNazivButton.Name = "saveNazivButton";
             this.saveNazivButton.Size = new System.Drawing.Size(36, 36);
@@ -604,7 +605,7 @@
             // 
             this.saveArtikalButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveArtikalButton.BackgroundImage")));
             this.saveArtikalButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.saveArtikalButton.Location = new System.Drawing.Point(299, 431);
+            this.saveArtikalButton.Location = new System.Drawing.Point(300, 392);
             this.saveArtikalButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveArtikalButton.Name = "saveArtikalButton";
             this.saveArtikalButton.Size = new System.Drawing.Size(36, 36);
@@ -615,7 +616,7 @@
             // 
             this.saveDjonButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveDjonButton.BackgroundImage")));
             this.saveDjonButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.saveDjonButton.Location = new System.Drawing.Point(299, 545);
+            this.saveDjonButton.Location = new System.Drawing.Point(300, 506);
             this.saveDjonButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveDjonButton.Name = "saveDjonButton";
             this.saveDjonButton.Size = new System.Drawing.Size(36, 36);
@@ -626,7 +627,7 @@
             // 
             this.saveIzradaButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveIzradaButton.BackgroundImage")));
             this.saveIzradaButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.saveIzradaButton.Location = new System.Drawing.Point(299, 620);
+            this.saveIzradaButton.Location = new System.Drawing.Point(300, 581);
             this.saveIzradaButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveIzradaButton.Name = "saveIzradaButton";
             this.saveIzradaButton.Size = new System.Drawing.Size(36, 36);
@@ -637,7 +638,7 @@
             // 
             this.saveNamenaButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveNamenaButton.BackgroundImage")));
             this.saveNamenaButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.saveNamenaButton.Location = new System.Drawing.Point(299, 658);
+            this.saveNamenaButton.Location = new System.Drawing.Point(300, 619);
             this.saveNamenaButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveNamenaButton.Name = "saveNamenaButton";
             this.saveNamenaButton.Size = new System.Drawing.Size(36, 36);
@@ -648,7 +649,7 @@
             // 
             this.saveOdrzavanjeButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveOdrzavanjeButton.BackgroundImage")));
             this.saveOdrzavanjeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.saveOdrzavanjeButton.Location = new System.Drawing.Point(299, 698);
+            this.saveOdrzavanjeButton.Location = new System.Drawing.Point(300, 659);
             this.saveOdrzavanjeButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveOdrzavanjeButton.Name = "saveOdrzavanjeButton";
             this.saveOdrzavanjeButton.Size = new System.Drawing.Size(36, 36);
@@ -659,7 +660,7 @@
             // 
             this.savePorekloButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("savePorekloButton.BackgroundImage")));
             this.savePorekloButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.savePorekloButton.Location = new System.Drawing.Point(299, 239);
+            this.savePorekloButton.Location = new System.Drawing.Point(300, 200);
             this.savePorekloButton.Margin = new System.Windows.Forms.Padding(2);
             this.savePorekloButton.Name = "savePorekloButton";
             this.savePorekloButton.Size = new System.Drawing.Size(36, 36);
@@ -670,7 +671,7 @@
             // 
             this.savePostavaButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("savePostavaButton.BackgroundImage")));
             this.savePostavaButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.savePostavaButton.Location = new System.Drawing.Point(299, 506);
+            this.savePostavaButton.Location = new System.Drawing.Point(300, 467);
             this.savePostavaButton.Margin = new System.Windows.Forms.Padding(2);
             this.savePostavaButton.Name = "savePostavaButton";
             this.savePostavaButton.Size = new System.Drawing.Size(36, 36);
@@ -681,7 +682,7 @@
             // 
             this.saveProizvodjacButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveProizvodjacButton.BackgroundImage")));
             this.saveProizvodjacButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.saveProizvodjacButton.Location = new System.Drawing.Point(299, 317);
+            this.saveProizvodjacButton.Location = new System.Drawing.Point(300, 278);
             this.saveProizvodjacButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveProizvodjacButton.Name = "saveProizvodjacButton";
             this.saveProizvodjacButton.Size = new System.Drawing.Size(36, 36);
@@ -692,7 +693,7 @@
             // 
             this.saveSrpsButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveSrpsButton.BackgroundImage")));
             this.saveSrpsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.saveSrpsButton.Location = new System.Drawing.Point(299, 582);
+            this.saveSrpsButton.Location = new System.Drawing.Point(300, 543);
             this.saveSrpsButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveSrpsButton.Name = "saveSrpsButton";
             this.saveSrpsButton.Size = new System.Drawing.Size(36, 36);
@@ -703,7 +704,7 @@
             // 
             this.saveUverenjeButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveUverenjeButton.BackgroundImage")));
             this.saveUverenjeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.saveUverenjeButton.Location = new System.Drawing.Point(299, 355);
+            this.saveUverenjeButton.Location = new System.Drawing.Point(300, 316);
             this.saveUverenjeButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveUverenjeButton.Name = "saveUverenjeButton";
             this.saveUverenjeButton.Size = new System.Drawing.Size(36, 36);
@@ -714,7 +715,7 @@
             // 
             this.saveUvoznikButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveUvoznikButton.BackgroundImage")));
             this.saveUvoznikButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.saveUvoznikButton.Location = new System.Drawing.Point(299, 279);
+            this.saveUvoznikButton.Location = new System.Drawing.Point(300, 240);
             this.saveUvoznikButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveUvoznikButton.Name = "saveUvoznikButton";
             this.saveUvoznikButton.Size = new System.Drawing.Size(36, 36);
@@ -805,10 +806,23 @@
             this.groupBox1.Controls.Add(this.savePorekloButton);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(388, 870);
+            this.groupBox1.Size = new System.Drawing.Size(388, 707);
             this.groupBox1.TabIndex = 70;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Deklaracija";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.txtNaziv);
+            this.groupBox3.Controls.Add(this.saveSablonButton);
+            this.groupBox3.Controls.Add(this.loadSablonButton);
+            this.groupBox3.Location = new System.Drawing.Point(6, 19);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(376, 177);
+            this.groupBox3.TabIndex = 72;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Šabloni";
             // 
             // groupBox2
             // 
@@ -818,43 +832,58 @@
             this.groupBox2.Controls.Add(this.numericUpDownLabels);
             this.groupBox2.Controls.Add(this.numericUpDownPosition);
             this.groupBox2.Controls.Add(this.addToA4Button);
-            this.groupBox2.Location = new System.Drawing.Point(12, 888);
+            this.groupBox2.Location = new System.Drawing.Point(12, 725);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(388, 269);
+            this.groupBox2.Size = new System.Drawing.Size(388, 235);
             this.groupBox2.TabIndex = 71;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Štampa";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.txtNaziv);
-            this.groupBox3.Controls.Add(this.saveSablonButton);
-            this.groupBox3.Controls.Add(this.loadSablonButton);
-            this.groupBox3.Location = new System.Drawing.Point(6, 39);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(376, 177);
-            this.groupBox3.TabIndex = 72;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Šabloni";
             // 
             // groupBox4
             // 
             this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.groupBox4.Controls.Add(this.previewPanel);
-            this.groupBox4.Location = new System.Drawing.Point(420, 12);
+            this.groupBox4.Location = new System.Drawing.Point(753, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(813, 1145);
+            this.groupBox4.Size = new System.Drawing.Size(620, 857);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Preview";
+            // 
+            // labelsListBox
+            // 
+            this.labelsListBox.FormattingEnabled = true;
+            this.labelsListBox.Location = new System.Drawing.Point(406, 31);
+            this.labelsListBox.Name = "labelsListBox";
+            this.labelsListBox.Size = new System.Drawing.Size(341, 173);
+            this.labelsListBox.TabIndex = 72;
+            // 
+            // deleteLabelButton
+            // 
+            this.deleteLabelButton.Location = new System.Drawing.Point(643, 214);
+            this.deleteLabelButton.Name = "deleteLabelButton";
+            this.deleteLabelButton.Size = new System.Drawing.Size(104, 23);
+            this.deleteLabelButton.TabIndex = 73;
+            this.deleteLabelButton.Text = "Briši iz A4";
+            this.deleteLabelButton.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Location = new System.Drawing.Point(406, 343);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(341, 203);
+            this.panel1.TabIndex = 74;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1241, 1180);
+            this.ClientSize = new System.Drawing.Size(1385, 976);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.deleteLabelButton);
+            this.Controls.Add(this.labelsListBox);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
@@ -865,10 +894,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPosition)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -945,6 +974,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ListBox labelsListBox;
+        private System.Windows.Forms.Button deleteLabelButton;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

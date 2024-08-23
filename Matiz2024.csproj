@@ -219,5 +219,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MATIZ LOGO DEKLARACIJE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MATIZ LOGO DEKLARACIJE 1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

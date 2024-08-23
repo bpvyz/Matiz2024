@@ -63,6 +63,26 @@ namespace Matiz2024.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MATIZ_LOGO_DEKLARACIJE {
+            get {
+                object obj = ResourceManager.GetObject("MATIZ LOGO DEKLARACIJE", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MATIZ_LOGO_DEKLARACIJE_1 {
+            get {
+                object obj = ResourceManager.GetObject("MATIZ LOGO DEKLARACIJE 1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap remove {
             get {
                 object obj = ResourceManager.GetObject("remove", resourceCulture);

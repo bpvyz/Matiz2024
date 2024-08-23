@@ -25,7 +25,7 @@ namespace Matiz2024
         private PrintDocument printDocument = new PrintDocument();
         private PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
 
-        public Form1()
+    public Form1()
         {
             InitializeComponent();
 
@@ -41,7 +41,54 @@ namespace Matiz2024
             addToA4Button.Click += AddLabelToA4;
             printButton.Click += PrintButton_Click;
 
+            string tooltiptext = "Sačuvaj";
+            string tooltiptext1 = "Obriši";
+
             // Attach events
+            toolTip1.SetToolTip(saveUvoznikButton, tooltiptext);
+            toolTip1.SetToolTip(saveUverenjeButton, tooltiptext);
+            toolTip1.SetToolTip(saveSrpsButton, tooltiptext);
+            toolTip1.SetToolTip(saveProizvodjacButton, tooltiptext);
+            toolTip1.SetToolTip(savePostavaButton, tooltiptext);
+            toolTip1.SetToolTip(savePorekloButton, tooltiptext);
+            toolTip1.SetToolTip(saveOdrzavanjeButton, tooltiptext);
+            toolTip1.SetToolTip(saveNamenaButton, tooltiptext);
+            toolTip1.SetToolTip(saveLiceButton, tooltiptext);
+            toolTip1.SetToolTip(saveIzradaButton, tooltiptext);
+            toolTip1.SetToolTip(saveDjonButton, tooltiptext);
+            toolTip1.SetToolTip(saveArtikalButton, tooltiptext);
+            toolTip1.SetToolTip(saveNazivButton, tooltiptext);
+
+            toolTip2.SetToolTip(removeUvoznikButton, tooltiptext1);
+            toolTip2.SetToolTip(removeUverenjeButton, tooltiptext1);
+            toolTip2.SetToolTip(removeSrpsButton, tooltiptext1);
+            toolTip2.SetToolTip(removeProizvodjacButton, tooltiptext1);
+            toolTip2.SetToolTip(removePostavaButton, tooltiptext1);
+            toolTip2.SetToolTip(removePorekloButton, tooltiptext1);
+            toolTip2.SetToolTip(removeOdrzavanjeButton, tooltiptext1);
+            toolTip2.SetToolTip(removeNamenaButton, tooltiptext1);
+            toolTip2.SetToolTip(removeLiceButton, tooltiptext1);
+            toolTip2.SetToolTip(removeIzradaButton, tooltiptext1);
+            toolTip2.SetToolTip(removeArtikalButton, tooltiptext1);
+            toolTip2.SetToolTip(removeNazivButton, tooltiptext1);
+            toolTip2.SetToolTip(removeDjonButton, tooltiptext1);
+
+            comboBoxPoreklo.SelectedIndexChanged += (s, ev) => UpdateLabelCloseup();
+            comboBoxUvoznik.SelectedIndexChanged += (s, ev) => UpdateLabelCloseup();
+            comboBoxProizvodjac.SelectedIndexChanged += (s, ev) => UpdateLabelCloseup();
+            comboBoxUverenje.SelectedIndexChanged += (s, ev) => UpdateLabelCloseup();
+            comboBoxNaziv.SelectedIndexChanged += (s, ev) => UpdateLabelCloseup();
+            comboBoxArtikal.SelectedIndexChanged += (s, ev) => UpdateLabelCloseup();
+            comboBoxLice.SelectedIndexChanged += (s, ev) => UpdateLabelCloseup();
+            comboBoxPostava.SelectedIndexChanged += (s, ev) => UpdateLabelCloseup();
+            comboBoxDjon.SelectedIndexChanged += (s, ev) => UpdateLabelCloseup();
+            comboBoxSrps.SelectedIndexChanged += (s, ev) => UpdateLabelCloseup();
+            comboBoxIzrada.SelectedIndexChanged += (s, ev) => UpdateLabelCloseup();
+            comboBoxNamena.SelectedIndexChanged += (s, ev) => UpdateLabelCloseup();
+            comboBoxOdrzavanje.SelectedIndexChanged += (s, ev) => UpdateLabelCloseup();
+
+            // Attach events
+
             saveUvoznikButton.Click += saveUvoznikButton_Click;
             saveUverenjeButton.Click += saveUverenjeButton_Click;
             saveSrpsButton.Click += saveSrpsButton_Click;
@@ -56,7 +103,6 @@ namespace Matiz2024
             saveArtikalButton.Click += saveArtikalButton_Click;
             saveNazivButton.Click += saveNazivButton_Click;
 
-            // Attach events
             removeUvoznikButton.Click += removeUvoznikButton_Click;
             removeUverenjeButton.Click += removeUverenjeButton_Click;
             removeSrpsButton.Click += removeSrpsButton_Click;
@@ -91,7 +137,10 @@ namespace Matiz2024
 
             // Attach Paint event handler
             previewPanel.Paint += previewPanel_Paint;
+
+            labelCloseupPanel.Paint += labelCloseupPanel_Paint;
         }
+
 
         private void SaveSablon(object sender, EventArgs e)
         {
@@ -171,6 +220,8 @@ namespace Matiz2024
                     SetComboBoxValue(comboBoxDjon, (string)sablon.djon);
                     SetComboBoxValue(comboBoxArtikal, (string)sablon.artikal);
                     SetComboBoxValue(comboBoxNaziv, (string)sablon.naziv);
+
+                    UpdateLabelCloseup();
 
                     MessageBox.Show("Sablon uvezen uspesno!");
                 }
@@ -357,9 +408,6 @@ namespace Matiz2024
             UpdateA4Preview();
         }
 
-
-
-
         private void UpdateA4Preview()
         {
             previewPanel.Invalidate(); // Forces the panel to repaint
@@ -498,6 +546,7 @@ namespace Matiz2024
                 return g.MeasureString(text, font).Width;
             }
         }
+
         private void PrintPage(object sender, PrintPageEventArgs e)
         {
             const int dpi = 300;
@@ -644,216 +693,303 @@ namespace Matiz2024
             }
         }
 
+        private void UpdateToolTipSave(ToolTip toolTip, Button button, string text, Color color)
+        {
+            toolTip.SetToolTip(button, text);
+            Timer timer = new Timer { Interval = 2000 };
+            timer.Tick += (s, e) =>
+            {
+                toolTip.SetToolTip(button, "Sačuvaj");
+                timer.Stop();
+            };
+            timer.Start();
+        }
+
+        private void UpdateToolTipRemove(ToolTip toolTip, Button button, string text, Color color)
+        {
+            toolTip.SetToolTip(button, text);
+            Timer timer = new Timer { Interval = 2000 };
+            timer.Tick += (s, e) =>
+            {
+                toolTip.SetToolTip(button, "Obriši");
+                timer.Stop();
+            };
+            timer.Start();
+        }
 
         private void saveUvoznikButton_Click(object sender, EventArgs e)
         {
             SaveComboBoxValue(comboBoxUvoznik, "uvoznik.json");
+            UpdateToolTipSave(toolTip1, saveUvoznikButton, "Sačuvano", Color.Green);
         }
 
         private void saveUverenjeButton_Click(object sender, EventArgs e)
         {
             SaveComboBoxValue(comboBoxUverenje, "uverenje.json");
+            UpdateToolTipSave(toolTip1, saveUverenjeButton, "Sačuvano", Color.Green);
         }
 
         private void saveSrpsButton_Click(object sender, EventArgs e)
         {
             SaveComboBoxValue(comboBoxSrps, "srps.json");
+            UpdateToolTipSave(toolTip1, saveSrpsButton, "Sačuvano", Color.Green);
         }
 
         private void saveProizvodjacButton_Click(object sender, EventArgs e)
         {
             SaveComboBoxValue(comboBoxProizvodjac, "proizvodjac.json");
+            UpdateToolTipSave(toolTip1, saveProizvodjacButton, "Sačuvano", Color.Green);
         }
 
         private void savePostavaButton_Click(object sender, EventArgs e)
         {
             SaveComboBoxValue(comboBoxPostava, "postava.json");
+            UpdateToolTipSave(toolTip1, savePostavaButton, "Sačuvano", Color.Green);
         }
 
         private void savePorekloButton_Click(object sender, EventArgs e)
         {
             SaveComboBoxValue(comboBoxPoreklo, "poreklo.json");
+            UpdateToolTipSave(toolTip1, savePorekloButton, "Sačuvano", Color.Green);
         }
 
         private void saveOdrzavanjeButton_Click(object sender, EventArgs e)
         {
             SaveComboBoxValue(comboBoxOdrzavanje, "odrzavanje.json");
+            UpdateToolTipSave(toolTip1, saveOdrzavanjeButton, "Sačuvano", Color.Green);
         }
 
         private void saveNamenaButton_Click(object sender, EventArgs e)
         {
             SaveComboBoxValue(comboBoxNamena, "namena.json");
+            UpdateToolTipSave(toolTip1, saveNamenaButton, "Sačuvano", Color.Green);
         }
 
         private void saveLiceButton_Click(object sender, EventArgs e)
         {
             SaveComboBoxValue(comboBoxLice, "lice.json");
+            UpdateToolTipSave(toolTip1, saveLiceButton, "Sačuvano", Color.Green);
         }
 
         private void saveIzradaButton_Click(object sender, EventArgs e)
         {
             SaveComboBoxValue(comboBoxIzrada, "izrada.json");
+            UpdateToolTipSave(toolTip1, saveIzradaButton, "Sačuvano", Color.Green);
         }
 
         private void saveDjonButton_Click(object sender, EventArgs e)
         {
             SaveComboBoxValue(comboBoxDjon, "djon.json");
+            UpdateToolTipSave(toolTip1, saveDjonButton, "Sačuvano", Color.Green);
         }
 
         private void saveArtikalButton_Click(object sender, EventArgs e)
         {
             SaveComboBoxValue(comboBoxArtikal, "artikal.json");
+            UpdateToolTipSave(toolTip1, saveArtikalButton, "Sačuvano", Color.Green);
         }
 
         private void saveNazivButton_Click(object sender, EventArgs e)
         {
             SaveComboBoxValue(comboBoxNaziv, "naziv.json");
+            UpdateToolTipSave(toolTip1, saveNazivButton, "Sačuvano", Color.Green);
         }
 
-        // Event handlers for removing individual ComboBox values
         private void removeUvoznikButton_Click(object sender, EventArgs e)
         {
             RemoveComboBoxValue(comboBoxUvoznik, "uvoznik.json");
+            UpdateToolTipRemove(toolTip2, removeUvoznikButton, "Obrisano", Color.Red);
         }
 
         private void removeUverenjeButton_Click(object sender, EventArgs e)
         {
             RemoveComboBoxValue(comboBoxUverenje, "uverenje.json");
+            UpdateToolTipRemove(toolTip2, removeUverenjeButton, "Obrisano", Color.Red);
         }
 
         private void removeSrpsButton_Click(object sender, EventArgs e)
         {
             RemoveComboBoxValue(comboBoxSrps, "srps.json");
+            UpdateToolTipRemove(toolTip2, removeSrpsButton, "Obrisano", Color.Red);
         }
 
         private void removeProizvodjacButton_Click(object sender, EventArgs e)
         {
             RemoveComboBoxValue(comboBoxProizvodjac, "proizvodjac.json");
+            UpdateToolTipRemove(toolTip2, removeProizvodjacButton, "Obrisano", Color.Red);
         }
 
         private void removePostavaButton_Click(object sender, EventArgs e)
         {
             RemoveComboBoxValue(comboBoxPostava, "postava.json");
+            UpdateToolTipRemove(toolTip2, removePostavaButton, "Obrisano", Color.Red);
         }
 
         private void removePorekloButton_Click(object sender, EventArgs e)
         {
             RemoveComboBoxValue(comboBoxPoreklo, "poreklo.json");
+            UpdateToolTipRemove(toolTip2, removePorekloButton, "Obrisano", Color.Red);
         }
 
         private void removeOdrzavanjeButton_Click(object sender, EventArgs e)
         {
             RemoveComboBoxValue(comboBoxOdrzavanje, "odrzavanje.json");
+            UpdateToolTipRemove(toolTip2, removeOdrzavanjeButton, "Obrisano", Color.Red);
         }
 
         private void removeNamenaButton_Click(object sender, EventArgs e)
         {
             RemoveComboBoxValue(comboBoxNamena, "namena.json");
+            UpdateToolTipRemove(toolTip2, removeNamenaButton, "Obrisano", Color.Red);
         }
 
         private void removeLiceButton_Click(object sender, EventArgs e)
         {
             RemoveComboBoxValue(comboBoxLice, "lice.json");
+            UpdateToolTipRemove(toolTip2, removeLiceButton, "Obrisano", Color.Red);
         }
 
         private void removeIzradaButton_Click(object sender, EventArgs e)
         {
             RemoveComboBoxValue(comboBoxIzrada, "izrada.json");
+            UpdateToolTipRemove(toolTip2, removeIzradaButton, "Obrisano", Color.Red);
         }
 
         private void removeDjonButton_Click(object sender, EventArgs e)
         {
             RemoveComboBoxValue(comboBoxDjon, "djon.json");
+            UpdateToolTipRemove(toolTip2, removeDjonButton, "Obrisano", Color.Red);
         }
 
         private void removeArtikalButton_Click(object sender, EventArgs e)
         {
             RemoveComboBoxValue(comboBoxArtikal, "artikal.json");
+            UpdateToolTipRemove(toolTip2, removeArtikalButton, "Obrisano", Color.Red);
         }
 
         private void removeNazivButton_Click(object sender, EventArgs e)
         {
             RemoveComboBoxValue(comboBoxNaziv, "naziv.json");
+            UpdateToolTipRemove(toolTip2, removeNazivButton, "Obrisano", Color.Red);
         }
         private void PrintButton_Click(object sender, EventArgs e)
         {
             printPreviewDialog.ShowDialog();
         }
 
-
-        private void RenderLabelCloseup(Graphics g, string labelText)
+        private void UpdateLabelCloseup()
         {
-            float scaleFactor = 2.5f; // Scale up the label for close-up view
+            if (labelCloseupPanel == null) return;
 
-            // Define dimensions based on scale factor
-            float mmToPixel = 96 / 25.4f * scaleFactor;
-            float labelWidth = 70 * mmToPixel;
-            float labelHeight = 37 * mmToPixel;
+            // Format the label text from combobox values
+            string labelText = $"ZEMLJA POREKLA: {comboBoxPoreklo.Text}\n" +
+                               $"UVOZNIK: {comboBoxUvoznik.Text}\n" +
+                               $"PROIZVOĐAČ: {comboBoxProizvodjac.Text}\n" +
+                               $"UVERENJE BR: {comboBoxUverenje.Text}\n" +
+                               $"NAZIV ROBE: {comboBoxNaziv.Text}\n" +
+                               $"ARTIKAL: {comboBoxArtikal.Text}\n" +
+                               $"SIROVINSKI SASTAV: LICE-{comboBoxLice.Text}, POSTAVA-{comboBoxPostava.Text}\n" +
+                               $"{new string(' ', 40)}ĐON-{comboBoxDjon.Text}\n" +
+                               $"SRPS: {comboBoxSrps.Text}\n" +
+                               $"NAČIN IZRADE: {comboBoxIzrada.Text}\n" +
+                               $"NAMENA: {comboBoxNamena.Text}\n" +
+                               $"ODRŽAVANJE: {comboBoxOdrzavanje.Text}\n";
 
-            Font headerFont = new Font("Arial", 16 * scaleFactor, FontStyle.Bold);
-            Font footerFont = new Font("Arial", 10 * scaleFactor, FontStyle.Bold);
-            Font textFont = new Font("Arial", 12 * scaleFactor, FontStyle.Regular);
+            // Set the formatted text as the Tag of the panel
+            labelCloseupPanel.Tag = labelText;
 
-            float textMargin = 5 * mmToPixel;
-
-            g.Clear(Color.White);
-            g.DrawRectangle(Pens.Black, 0, 0, labelWidth, labelHeight);
-
-            // Draw Header
-            string header = "D E K L A R A C I J A";
-            DrawText(g, header, textMargin, textMargin, labelWidth - 2 * textMargin, 14 * scaleFactor, headerFont, centerText: true);
-
-            // Draw Main Text
-            float headerHeight = g.MeasureString(header, headerFont).Height;
-            float remainingTextY = headerHeight + 3 * mmToPixel;
-            float remainingTextHeight = labelHeight - headerHeight - 3 * mmToPixel - textMargin - 5 * scaleFactor;
-            remainingTextHeight = Math.Max(remainingTextHeight, 0);
-
-            DrawText(g, labelText, textMargin, remainingTextY, labelWidth - 2 * textMargin, remainingTextHeight, textFont);
-
-            // Draw Footer
-            string footer = "KVALITET KONTROLISAO JUGOINSPEKT BEOGRAD";
-            DrawText(g, footer, textMargin, labelHeight - textMargin - 5 * scaleFactor, labelWidth - 2 * textMargin, 5 * scaleFactor, footerFont, centerText: true);
+            // Invalidate the panel to trigger a repaint
+            labelCloseupPanel.Invalidate();
         }
-
-
-        private void RenderLabelForA4(Graphics g, string labelText, float x, float y, float labelWidth, float labelHeight)
-        {
-            Font headerFont = new Font("Arial", 16, FontStyle.Bold);
-            Font footerFont = new Font("Arial", 10, FontStyle.Bold);
-            Font textFont = new Font("Arial", 12, FontStyle.Regular);
-
-            float textMargin = 5;
-
-            g.DrawRectangle(Pens.Black, x, y, labelWidth, labelHeight);
-
-            // Draw Header
-            string header = "D E K L A R A C I J A";
-            DrawText(g, header, x + textMargin, y + textMargin, labelWidth - 2 * textMargin, 14, headerFont, centerText: true);
-
-            // Draw Main Text
-            float headerHeight = g.MeasureString(header, headerFont).Height;
-            float remainingTextY = y + headerHeight + 3;
-            float remainingTextHeight = labelHeight - headerHeight - 3 - textMargin - 5;
-            remainingTextHeight = Math.Max(remainingTextHeight, 0);
-
-            DrawText(g, labelText, x + textMargin, remainingTextY, labelWidth - 2 * textMargin, remainingTextHeight, textFont);
-
-            // Draw Footer
-            string footer = "KVALITET KONTROLISAO JUGOINSPEKT BEOGRAD";
-            DrawText(g, footer, x + textMargin, y + labelHeight - textMargin - 5, labelWidth - 2 * textMargin, 5, footerFont, centerText: true);
-        }
-
 
         private void labelCloseupPanel_Paint(object sender, PaintEventArgs e)
         {
             if (e == null || e.Graphics == null) return;
 
             Graphics g = e.Graphics;
+            g.Clear(Color.White);
 
-            // Render a label from the ListBox selection or other source
-            string labelText = /* Retrieve selected label text */;
-            RenderLabelCloseup(g, labelText);
+            // Get the labelText from the panel Tag
+            string labelText = labelCloseupPanel.Tag as string;
+            if (string.IsNullOrEmpty(labelText)) return;
+
+            float scaleFactor = 2.0f; // Scaling factor for the closeup label
+
+            // Convert millimeters to pixels using the scaling factor
+            float mmToPixel = 96 / 25.4f * scaleFactor;
+            float labelWidth = 70 * mmToPixel;
+            float labelHeight = 37 * mmToPixel;
+
+            // Font sizes with scaling factor
+            Font headerFont = new Font("Arial", 16 * scaleFactor, FontStyle.Bold);
+            Font footerFont = new Font("Arial", 10 * scaleFactor, FontStyle.Bold);
+            Font textFont = new Font("Arial", 12 * scaleFactor, FontStyle.Regular);
+
+            // Margins and spacing with scaling factor
+            float textMargin = 5 * mmToPixel;
+            float spaceBetweenHeaderAndText = 0;
+
+            // Draw header
+            string header = "D E K L A R A C I J A";
+            float headerWidth = labelWidth - 2 * textMargin;
+            float headerX = textMargin;
+            float headerY = textMargin;
+            DrawTextCl(g, header, headerX, headerY, headerWidth, 14 * scaleFactor, headerFont, centerText: true);
+
+            // Measure header height
+            float headerHeight = g.MeasureString(header, headerFont).Height - 15;
+
+            // Draw label text
+            float remainingTextY = headerY + headerHeight + spaceBetweenHeaderAndText;
+            float remainingTextHeight = labelHeight - headerHeight - spaceBetweenHeaderAndText - textMargin - 10 * mmToPixel; // Adjust as needed
+
+            remainingTextHeight = Math.Max(remainingTextHeight, 0);
+            float remainingTextWidth = labelWidth - 2 * textMargin;
+            DrawTextCl(g, labelText, textMargin, remainingTextY, remainingTextWidth, remainingTextHeight, textFont);
+
+            // Draw footer
+            string footer = "KVALITET KONTROLISAO JUGOINSPEKT BEOGRAD";
+            float footerWidth = labelWidth - 2 * textMargin;
+            float footerX = textMargin;
+            float footerY = labelHeight - textMargin - g.MeasureString(footer, footerFont).Height; // Adjusted to fit in the bottom
+
+            DrawTextCl(g, footer, footerX, footerY, footerWidth, 5 * scaleFactor, footerFont, centerText: true);
+        }
+
+        private void DrawTextCl(Graphics g, string text, float x, float y, float width, float height, Font font, bool centerText = false)
+        {
+            // Define a minimum font size to avoid extremely small fonts
+            const float minFontSize = 7.0f;
+
+            SizeF textSize = g.MeasureString(text, font);
+
+            // Adjust font size if needed
+            while (textSize.Width > width || textSize.Height > height)
+            {
+                font = new Font(font.FontFamily, font.Size - 0.5f, font.Style);
+                textSize = g.MeasureString(text, font);
+
+                // Exit loop if font size is below minimum threshold
+                if (font.Size <= minFontSize) break;
+            }
+
+            if (centerText)
+            {
+                x += (width - textSize.Width) / 2;
+                y += (height - textSize.Height) / 2;
+            }
+
+            string[] lines = SplitTextIntoLines(text, font, width);
+            float lineHeight = g.MeasureString("A", font).Height;
+
+            float textY = y; // Start from the top of the sticker
+            foreach (var line in lines)
+            {
+                g.DrawString(line, font, Brushes.Black, new PointF(x, textY)); // Draw text
+                textY += lineHeight;
+                if (textY + lineHeight > y + height)
+                    break;
+            }
         }
 
 

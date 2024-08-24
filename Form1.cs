@@ -560,7 +560,7 @@ namespace Matiz2024
             float scale = Math.Min(scaleX, scaleY);
 
             float xOffset = (e.PageBounds.Width - labelsPerRow * labelWidth * scale) / 2;
-            float yOffset = (e.PageBounds.Height - labelsPerColumn * labelHeight * scale) / 2;
+            float yOffset = -5; // Fixed yOffset to reduce the top margin (Adjust as necessary)
 
             Font headerFont = new Font("Arial", 18 * scale, FontStyle.Bold);
             Font footerFont = new Font("Arial", 10 * scale, FontStyle.Bold);
@@ -575,8 +575,6 @@ namespace Matiz2024
                     {
                         float x = xOffset + col * labelWidth * scale;
                         float y = yOffset + row * labelHeight * scale;
-
-                        e.Graphics.DrawRectangle(Pens.Black, x, y, labelWidth * scale, labelHeight * scale);
 
                         string labelText = labelsOnPage[index] ?? string.Empty;
                         if (!string.IsNullOrEmpty(labelText))
@@ -600,13 +598,16 @@ namespace Matiz2024
             e.HasMorePages = endLabelIndex < labelsOnPage.Count;
         }
 
-        private void LoadComboBoxValue(ComboBox comboBox, string fileName)
+        public void LoadComboBoxValue(ComboBox comboBox, string fileName)
         {
-            if (File.Exists(fileName))
+            // Get the full path to the file
+            string fullPath = GetFullPath(fileName);
+
+            if (File.Exists(fullPath))
             {
                 try
                 {
-                    var json = File.ReadAllText(fileName);
+                    var json = File.ReadAllText(fullPath);
                     var values = JsonConvert.DeserializeObject<List<string>>(json);
 
                     if (values != null)
@@ -623,27 +624,56 @@ namespace Matiz2024
                 }
                 catch (JsonSerializationException)
                 {
-                    MessageBox.Show($"Greska prilikom ucitavanja podataka iz {fileName}. Fajl je mozda corrupted.");
+                    MessageBox.Show($"Error loading data from {fullPath}. The file may be corrupted.");
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show($"The file {fullPath} does not exist.");
             }
         }
 
-        private void SaveComboBoxValue(ComboBox comboBox, string fileName)
+        private string GetFullPath(string fileName)
+        {
+            // Construct the full file path using Desktop/sabloni/fields
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string directoryPath = System.IO.Path.Combine(desktopPath, "sabloni", "fields");
+            return System.IO.Path.Combine(directoryPath, fileName);
+        }
+
+        public void SaveComboBoxValue(ComboBox comboBox, string fileName)
         {
             List<string> values = new List<string>();
 
+            // Get the full path to the file
+            string fullPath = GetFullPath(fileName);
+
+            // Ensure the directory exists
+            string directoryPath = System.IO.Path.GetDirectoryName(fullPath);
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
             // Load existing values if the file exists
-            if (File.Exists(fileName))
+            if (File.Exists(fullPath))
             {
                 try
                 {
-                    var existingJson = File.ReadAllText(fileName);
+                    var existingJson = File.ReadAllText(fullPath);
                     values = JsonConvert.DeserializeObject<List<string>>(existingJson) ?? new List<string>();
                 }
                 catch (JsonSerializationException)
                 {
-                    // Handle the case where the file has corrupted or unexpected JSON data
-                    MessageBox.Show($"Greska prilikom ucitavanja podataka iz {fileName}. Fajl je mozda corrupted.");
+                    MessageBox.Show($"Error loading data from {fullPath}. The file may be corrupted.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}");
                 }
             }
 
@@ -652,21 +682,55 @@ namespace Matiz2024
             if (!string.IsNullOrWhiteSpace(value) && !values.Contains(value))
             {
                 values.Add(value);
-                var json = JsonConvert.SerializeObject(values, Formatting.Indented);
-                File.WriteAllText(fileName, json);
+                try
+                {
+                    var json = JsonConvert.SerializeObject(values, Formatting.Indented);
+                    File.WriteAllText(fullPath, json);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while saving data: {ex.Message}");
+                }
             }
 
-            comboBox.SelectedItem = value;
-            UpdateLabelCloseup();
             // Refresh the ComboBox to display updated values
-            LoadComboBoxValue(comboBox, fileName);
+            LoadComboBoxValue(comboBox, fullPath);
+
+            // Set the newly added item as selected
+            comboBox.SelectedItem = value;
+
+            // Update the closeup label
+            UpdateLabelCloseup();
         }
 
-        private void SaveComboBoxValues(ComboBox comboBox, string fileName)
+        public void SaveComboBoxValues(ComboBox comboBox, string fileName)
         {
+            // Get the full path to the file
+            string fullPath = GetFullPath(fileName);
+
+            // Ensure the directory exists
+            string directoryPath = System.IO.Path.GetDirectoryName(fullPath);
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
             // Save the current items in the ComboBox to the JSON file
-            var items = comboBox.Items.Cast<string>().ToList();
-            File.WriteAllText(fileName, JsonConvert.SerializeObject(items));
+            var items = new List<string>();
+            foreach (var item in comboBox.Items)
+            {
+                items.Add(item.ToString());
+            }
+
+            try
+            {
+                var json = JsonConvert.SerializeObject(items, Formatting.Indented);
+                File.WriteAllText(fullPath, json);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while saving data: {ex.Message}");
+            }
         }
 
         private void RemoveComboBoxValue(ComboBox comboBox, string fileName)

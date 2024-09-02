@@ -68,15 +68,8 @@
             this.label16 = new System.Windows.Forms.Label();
             this.numericUpDownPosition = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.labelsListBox = new System.Windows.Forms.ListBox();
-            this.deleteLabelButton = new System.Windows.Forms.Button();
-            this.labelCloseupPanel = new System.Windows.Forms.Panel();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.removePorekloButton = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.removeLiceButton = new System.Windows.Forms.Button();
             this.removeNazivButton = new System.Windows.Forms.Button();
             this.removeArtikalButton = new System.Windows.Forms.Button();
@@ -102,6 +95,13 @@
             this.savePostavaButton = new System.Windows.Forms.Button();
             this.saveOdrzavanjeButton = new System.Windows.Forms.Button();
             this.savePorekloButton = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.labelsListBox = new System.Windows.Forms.ListBox();
+            this.deleteLabelButton = new System.Windows.Forms.Button();
+            this.labelCloseupPanel = new System.Windows.Forms.Panel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
@@ -407,7 +407,7 @@
             // printButton
             // 
             this.printButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.printButton.Location = new System.Drawing.Point(1410, 987);
+            this.printButton.Location = new System.Drawing.Point(1410, 948);
             this.printButton.Name = "printButton";
             this.printButton.Size = new System.Drawing.Size(174, 46);
             this.printButton.TabIndex = 49;
@@ -537,10 +537,21 @@
             this.groupBox1.Controls.Add(this.savePorekloButton);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(388, 1035);
+            this.groupBox1.Size = new System.Drawing.Size(388, 989);
             this.groupBox1.TabIndex = 70;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Deklaracija";
+            // 
+            // removePorekloButton
+            // 
+            this.removePorekloButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removePorekloButton.BackgroundImage")));
+            this.removePorekloButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.removePorekloButton.Location = new System.Drawing.Point(53, 200);
+            this.removePorekloButton.Margin = new System.Windows.Forms.Padding(2);
+            this.removePorekloButton.Name = "removePorekloButton";
+            this.removePorekloButton.Size = new System.Drawing.Size(36, 36);
+            this.removePorekloButton.TabIndex = 60;
+            this.removePorekloButton.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -554,88 +565,6 @@
             this.groupBox3.TabIndex = 72;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Šabloni";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.numericUpDownLabels);
-            this.groupBox2.Controls.Add(this.numericUpDownPosition);
-            this.groupBox2.Controls.Add(this.addToA4Button);
-            this.groupBox2.Location = new System.Drawing.Point(406, 561);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(545, 235);
-            this.groupBox2.TabIndex = 71;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Formiranje lista A4";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox4.Controls.Add(this.previewPanel);
-            this.groupBox4.Location = new System.Drawing.Point(976, 79);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(620, 857);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "A4 Preview";
-            // 
-            // labelsListBox
-            // 
-            this.labelsListBox.FormattingEnabled = true;
-            this.labelsListBox.Location = new System.Drawing.Point(6, 19);
-            this.labelsListBox.Name = "labelsListBox";
-            this.labelsListBox.Size = new System.Drawing.Size(529, 173);
-            this.labelsListBox.TabIndex = 72;
-            // 
-            // deleteLabelButton
-            // 
-            this.deleteLabelButton.Location = new System.Drawing.Point(403, 198);
-            this.deleteLabelButton.Name = "deleteLabelButton";
-            this.deleteLabelButton.Size = new System.Drawing.Size(132, 23);
-            this.deleteLabelButton.TabIndex = 73;
-            this.deleteLabelButton.Text = "Briši iz A4";
-            this.deleteLabelButton.UseVisualStyleBackColor = true;
-            // 
-            // labelCloseupPanel
-            // 
-            this.labelCloseupPanel.BackColor = System.Drawing.Color.White;
-            this.labelCloseupPanel.Location = new System.Drawing.Point(10, 18);
-            this.labelCloseupPanel.Name = "labelCloseupPanel";
-            this.labelCloseupPanel.Size = new System.Drawing.Size(525, 263);
-            this.labelCloseupPanel.TabIndex = 74;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.labelsListBox);
-            this.groupBox5.Controls.Add(this.deleteLabelButton);
-            this.groupBox5.Location = new System.Drawing.Point(406, 812);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(545, 235);
-            this.groupBox5.TabIndex = 75;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Istorija dodavanja";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.labelCloseupPanel);
-            this.groupBox6.Location = new System.Drawing.Point(406, 229);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(545, 287);
-            this.groupBox6.TabIndex = 77;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Deklaracija preview";
-            // 
-            // removePorekloButton
-            // 
-            this.removePorekloButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removePorekloButton.BackgroundImage")));
-            this.removePorekloButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removePorekloButton.Location = new System.Drawing.Point(53, 200);
-            this.removePorekloButton.Margin = new System.Windows.Forms.Padding(2);
-            this.removePorekloButton.Name = "removePorekloButton";
-            this.removePorekloButton.Size = new System.Drawing.Size(36, 36);
-            this.removePorekloButton.TabIndex = 60;
-            this.removePorekloButton.UseVisualStyleBackColor = true;
             // 
             // removeLiceButton
             // 
@@ -912,6 +841,77 @@
             this.savePorekloButton.TabIndex = 38;
             this.savePorekloButton.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.numericUpDownLabels);
+            this.groupBox2.Controls.Add(this.numericUpDownPosition);
+            this.groupBox2.Controls.Add(this.addToA4Button);
+            this.groupBox2.Location = new System.Drawing.Point(406, 561);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(545, 235);
+            this.groupBox2.TabIndex = 71;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Formiranje lista A4";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox4.Controls.Add(this.previewPanel);
+            this.groupBox4.Location = new System.Drawing.Point(976, 47);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(620, 857);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "A4 Preview";
+            // 
+            // labelsListBox
+            // 
+            this.labelsListBox.FormattingEnabled = true;
+            this.labelsListBox.Location = new System.Drawing.Point(6, 19);
+            this.labelsListBox.Name = "labelsListBox";
+            this.labelsListBox.Size = new System.Drawing.Size(529, 134);
+            this.labelsListBox.TabIndex = 72;
+            // 
+            // deleteLabelButton
+            // 
+            this.deleteLabelButton.Location = new System.Drawing.Point(403, 159);
+            this.deleteLabelButton.Name = "deleteLabelButton";
+            this.deleteLabelButton.Size = new System.Drawing.Size(132, 23);
+            this.deleteLabelButton.TabIndex = 73;
+            this.deleteLabelButton.Text = "Briši iz A4";
+            this.deleteLabelButton.UseVisualStyleBackColor = true;
+            // 
+            // labelCloseupPanel
+            // 
+            this.labelCloseupPanel.BackColor = System.Drawing.Color.White;
+            this.labelCloseupPanel.Location = new System.Drawing.Point(10, 18);
+            this.labelCloseupPanel.Name = "labelCloseupPanel";
+            this.labelCloseupPanel.Size = new System.Drawing.Size(525, 263);
+            this.labelCloseupPanel.TabIndex = 74;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.labelsListBox);
+            this.groupBox5.Controls.Add(this.deleteLabelButton);
+            this.groupBox5.Location = new System.Drawing.Point(406, 812);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(545, 189);
+            this.groupBox5.TabIndex = 75;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Istorija dodavanja";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.labelCloseupPanel);
+            this.groupBox6.Location = new System.Drawing.Point(406, 229);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(545, 287);
+            this.groupBox6.TabIndex = 77;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Deklaracija preview";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::Matiz2024.Properties.Resources.MATIZ_LOGO_DEKLARACIJE_1;
@@ -927,7 +927,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1608, 1061);
+            this.ClientSize = new System.Drawing.Size(1608, 997);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);

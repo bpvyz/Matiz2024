@@ -1,18 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Printing;
-using iText.Kernel.Geom;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
-using Newtonsoft.Json;
-using System.IO;
-using iText.Layout.Properties;
 
 namespace Matiz2024
 {
@@ -149,9 +143,9 @@ namespace Matiz2024
                 nazivSablona = txtNaziv.Text,
                 uvoznik = comboBoxUvoznik.SelectedItem?.ToString() ?? "",
                 uverenje = comboBoxUverenje.SelectedItem?.ToString() ?? "",
-                srps = comboBoxSrps.SelectedItem?.ToString() ?? "",
                 proizvodjac = comboBoxProizvodjac.SelectedItem?.ToString() ?? "",
                 postava = comboBoxPostava.SelectedItem?.ToString() ?? "",
+                srps = comboBoxSrps.SelectedItem?.ToString() ?? "",
                 poreklo = comboBoxPoreklo.SelectedItem?.ToString() ?? "",
                 odrzavanje = comboBoxOdrzavanje.SelectedItem?.ToString() ?? "",
                 namena = comboBoxNamena.SelectedItem?.ToString() ?? "",
@@ -560,7 +554,7 @@ namespace Matiz2024
             float scale = Math.Min(scaleX, scaleY);
 
             float xOffset = (e.PageBounds.Width - labelsPerRow * labelWidth * scale) / 2;
-            float yOffset = -5; // Fixed yOffset to reduce the top margin (Adjust as necessary)
+            float yOffset = -15; // Fixed yOffset to reduce the top margin (Adjust as necessary)
 
             Font headerFont = new Font("Arial", 18 * scale, FontStyle.Bold);
             Font footerFont = new Font("Arial", 10 * scale, FontStyle.Bold);
@@ -772,6 +766,7 @@ namespace Matiz2024
             timer.Start();
         }
 
+     
         private void saveUvoznikButton_Click(object sender, EventArgs e)
         {
             SaveComboBoxValue(comboBoxUvoznik, "uvoznik.json");

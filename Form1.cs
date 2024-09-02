@@ -624,16 +624,16 @@ namespace Matiz2024
                 }
                 catch (JsonSerializationException)
                 {
-                    MessageBox.Show($"Error loading data from {fullPath}. The file may be corrupted.");
+                    MessageBox.Show($"Greska prilikom ucitavanja {fullPath}. Fajl je mozda corrupted.");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+                    MessageBox.Show($"Greska: {ex.Message}");
                 }
             }
             else
             {
-                MessageBox.Show($"The file {fullPath} does not exist.");
+                MessageBox.Show($"Fajl {fullPath} ne postoji.");
             }
         }
 
@@ -669,11 +669,11 @@ namespace Matiz2024
                 }
                 catch (JsonSerializationException)
                 {
-                    MessageBox.Show($"Error loading data from {fullPath}. The file may be corrupted.");
+                    MessageBox.Show($"Greska prilikom ucitavanja {fullPath}. Fajl je mozda corrupted.");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
+                    MessageBox.Show($"Greska: {ex.Message}");
                 }
             }
 
@@ -689,7 +689,7 @@ namespace Matiz2024
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"An error occurred while saving data: {ex.Message}");
+                    MessageBox.Show($"Greska prilikom cuvanja podataka: {ex.Message}");
                 }
             }
 
@@ -729,7 +729,7 @@ namespace Matiz2024
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while saving data: {ex.Message}");
+                MessageBox.Show($"Greska prilikom cuvanja podataka: {ex.Message}");
             }
         }
 

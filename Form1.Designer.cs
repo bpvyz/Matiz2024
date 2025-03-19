@@ -105,6 +105,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.pdfButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLabels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPosition)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -922,12 +923,24 @@
             this.pictureBox1.TabIndex = 78;
             this.pictureBox1.TabStop = false;
             // 
+            // pdfButton
+            // 
+            this.pdfButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.pdfButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pdfButton.Location = new System.Drawing.Point(1290, 916);
+            this.pdfButton.Name = "pdfButton";
+            this.pdfButton.Size = new System.Drawing.Size(92, 46);
+            this.pdfButton.TabIndex = 79;
+            this.pdfButton.Text = "PDF";
+            this.pdfButton.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1608, 971);
+            this.Controls.Add(this.pdfButton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
@@ -1033,6 +1046,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.Button pdfButton;
     }
 }
 

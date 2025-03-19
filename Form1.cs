@@ -19,6 +19,7 @@ namespace Matiz2024
         private const int LabelsPerColumn = 8;
         private PrintDocument printDocument = new PrintDocument();
         private PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+        private PrintDialog printDialog = new PrintDialog();
 
     public Form1()
         {
@@ -29,6 +30,7 @@ namespace Matiz2024
 
             // Initialize PrintPreviewDialog
             printPreviewDialog.Document = printDocument;
+            printDialog.Document = printDocument;
 
             // Attach events
             saveSablonButton.Click += SaveSablon;
@@ -114,6 +116,8 @@ namespace Matiz2024
 
             deleteLabelButton.Click += DeleteLabelButton_Click;
 
+            pdfButton.Click += pdfButton_Click;
+
 
             // Load saved values
             LoadComboBoxValue(comboBoxUvoznik, "uvoznik.json");
@@ -134,6 +138,11 @@ namespace Matiz2024
             previewPanel.Paint += previewPanel_Paint;
 
             labelCloseupPanel.Paint += labelCloseupPanel_Paint;
+        }
+
+        private void pdfButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void SaveSablon(object sender, EventArgs e)
@@ -924,6 +933,7 @@ namespace Matiz2024
         }
         private void PrintButton_Click(object sender, EventArgs e)
         {
+            printDialog.ShowDialog();
             printPreviewDialog.ShowDialog();
         }
 
@@ -1041,7 +1051,5 @@ namespace Matiz2024
                     break;
             }
         }
-
-
     }
 }
